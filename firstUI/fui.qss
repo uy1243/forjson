@@ -1,0 +1,7 @@
+QPushButton {
+    border: 2px outset green;
+    background: gray;
+}
+QTreeView:QTreeViewItem{
+	background:red;
+}
