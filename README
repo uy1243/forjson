@@ -1,12 +1,16 @@
-These pure QML examples demonstrate some of what can be easily done using just
-a few QML files.
+PyQt provides support for integration with OpenGL implementations on all
+platforms, giving developers the opportunity to display hardware accelerated
+3D graphics alongside a more conventional user interface.
+
+These examples demonstrate the basic techniques used to take advantage of
+OpenGL in PyQt applications.
+
 
 The example launcher provided with PyQt can be used to explore each of the
-examples in this directory. They can also be viewed directly with the
-QML viewer utility, without requiring compilation.
+examples in this directory.
 
 Documentation for these examples can be found via the Tutorial and Examples
-link in the main PyQt documentation.
+link in the main Qt documentation.
 
 
 Finding the PyQt Examples and Demos launcher
