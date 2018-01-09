@@ -1,8 +1,4 @@
-'''
-Created on Jan 8, 2018
-
-@author: yu
-'''
+# encoding: utf-8
 import sys
 import requests
 import json
@@ -15,23 +11,22 @@ class Connnection2lvge(unittest.TestCase):
     def mkHeaders_login(self):
         s = requests.Session()
         headers = {
-                'Accept':'application/json, text/javascript, */*; q=0.01',
-                'Accept-Encoding':'gzip, deflate',
-                'Accept-Language':'en-US,en;q=0.9',
-                'Connection':'keep-alive',
-                'Content-Length':'15',
-                'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8',
-                'Host':'www.lvgew.com',
-                'Origin':'http://www.lvgew.com',
-                'Referer':'http://www.lvgew.com/purview/user/toTopNav',
                 'User-Agent':'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.108 Safari/537.36',
                 'X-Requested-With':'XMLHttpRequest'}
 
-        param2lvge = {'name': '\u6cb3\u5357\u65c5\u9e3d\u79d1\u6280\u6709\u9650\u516c\u53f8', 'password': '12345678'}
-        r = s.post('http://www.lvgew.com/purview/user/login', params=param2lvge, headers=headers, timeout=10)
-        res2 = s.post('http://www.lvgew.com/purview/user/toHome')
-        print 'hi'
-        print r.text
+        param2lvge = {'name': '河南旅鸽科技有限公司','password': '12345678'}
+        r = s.post('http://www.lvgew.com/purview/user/login', params=param2lvge, headers=headers, timeout=6)
+        #r = requests.post('http://www.lvgew.com/purview/user/toLogin', params=param2lvge, headers=headers, timeout=6)
+        #res2 = s.post('http://www.lvgew.com/purview/user/toHome')
+        
+        toadd = {'name': '','pageSize':'20','pageIndex':'1'}
+        res2 = s.post('http://www.lvgew.com/basic/brand/query', params=toadd, headers=headers, timeout=6)
+        print res2.content
+        res=json.dumps(res2.content)
+        imgloc='http://www.lvgew.com/basic/brand/getImage?entityID=132&r=0.8790690929159222&type=2'
+        #print res
+        with open('./1.html', 'wb') as f:
+            f.write(res2.content)
         #return r.json()
     def runTest(self):
         self.mkHeaders_login()
